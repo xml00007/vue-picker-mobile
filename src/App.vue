@@ -1,14 +1,17 @@
 <template>
     <div id="app">
-        <div class="btnList">
-            <input type="button" value="单列" @click="onClick(1)">
-            <input type="button" value="双列非联动" @click="onClick(2)">
-            <input type="button" value="双列联动" @click="onClick(3)">
+        <div class="bg">
+            <p>vue-picker-mobile</p>
         </div>
         <div class="btnList">
-            <input type="button" value="年月日联动" @click="onClick(4)">
-            <input type="button" value="多列非联动" @click="onClick(5)">
-            <input type="button" value="多列联动" @click="onClick(6)">
+            <input type="button" value="单列" :class="{choose:show1}" @click="onClick(1)">
+            <input type="button" value="双列非联动" :class="{choose:show2}" @click="onClick(2)">
+            <input type="button" value="双列联动" :class="{choose:show3}" @click="onClick(3)">
+        </div>
+        <div class="btnList">
+            <input type="button" value="年月日联动" :class="{choose:show4}" @click="onClick(4)">
+            <input type="button" value="多列非联动" :class="{choose:show5}" @click="onClick(5)">
+            <input type="button" value="多列联动" :class="{choose:show6}" @click="onClick(6)">
         </div>
 
         <Picker @onChange="onChange" :isMulti="isMulti1" :list="list1"
@@ -63,7 +66,7 @@
         list4: date,
         defaultValue4: [2000, 5, 7],
         isMulti4: true,
-        isRelate4:true,
+        isRelate4: true,
 
         list5: multiple1,
         defaultValue5: ['3', 'C', 'B', 'A'],
@@ -75,8 +78,6 @@
         isMulti6: true,
         isRelate6: true,
       };
-    },
-    mounted() {
     },
     methods: {
       onChange(res) {
@@ -98,31 +99,84 @@
 </script>
 
 <style>
+    @import "./assets/reset.css";
+
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
+    }
+
+    .bg {
+        width: 100%;
+        height: 100px;
+        line-height: 100px;
+        background: black;
+        color: #228DFF;
+        font-family: Iceland;
+        font-size: 40px;
+    }
+
+    p {
+        /*animation: blue 1.5s ease-in-out infinite alternate;*/
+        text-shadow: 0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 15px #fff,
+        0 0 20px #228DFF,
+        0 0 35px #228DFF,
+        0 0 40px #228DFF,
+        0 0 50px #228DFF,
+        0 0 75px #228DFF;
     }
 
     .btnList {
         display: flex;
         flex: 1;
         justify-content: center;
-        font-size: 40px;
         margin-top: 20px;
     }
 
     .btnList input {
-        height: 20px;
-        border: 1px;
+        height: 30px;
+        /*border: 1px;*/
+        border: none;
+        outline: none;
+        font-size: 16px;
         border-radius: 2px;
         margin-right: 30px;
+        box-shadow:none;
+    }
+    .btnList input.choose {
+        color: #228DFF;
+        box-shadow: 5px 5px 5px #228DFF;
     }
 
     .btnList input:last-child {
         margin-right: 0;
+    }
+
+    @keyframes blue {
+        from {
+            text-shadow: 0 0 10px #fff,
+            0 0 20px #fff,
+            0 0 30px #fff,
+            0 0 40px #228DFF,
+            0 0 70px #228DFF,
+            0 0 80px #228DFF,
+            0 0 100px #228DFF,
+            0 0 150px #228DFF;
+        }
+        to {
+            text-shadow: 0 0 5px #fff,
+            0 0 10px #fff,
+            0 0 15px #fff,
+            0 0 20px #228DFF,
+            0 0 35px #228DFF,
+            0 0 40px #228DFF,
+            0 0 50px #228DFF,
+            0 0 75px #228DFF;
+        }
     }
 </style>
