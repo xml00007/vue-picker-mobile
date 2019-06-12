@@ -116,7 +116,7 @@
         background: black;
         color: #228DFF;
         font-family: Iceland;
-        font-size: 40px;
+        font-size: 2em;
     }
 
     p {
@@ -132,9 +132,9 @@
     }
 
     .btnList {
-        display: flex;
+        display: inline-flex;
         flex: 1;
-        justify-content: center;
+        justify-content: space-around;
         margin-top: 20px;
     }
 
@@ -143,10 +143,11 @@
         /*border: 1px;*/
         border: none;
         outline: none;
+        flex: 1;
         font-size: 16px;
         border-radius: 2px;
-        margin-right: 30px;
         box-shadow:none;
+        margin-right: 15px;
     }
     .btnList input.choose {
         color: #228DFF;
