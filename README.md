@@ -7,13 +7,11 @@
 <img src='./src/assets/s1.gif' width="200px"/>
 
 ## 两列
-#### 两列非联动             两列联动
-<img src='./src/assets/d1.gif' width="200px" margin-right="20px"/><img src='./src/assets/d2.gif' width="200px"/>
+#### 非联动&&&&联动
+<img src='./src/assets/d1.gif' width="200px" hspace="20"/><img src='./src/assets/d2.gif' width="200px"/>
 
 
 ## 多列
-#### 多列非联动
+#### 多列非联动&&&&联动
 <img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/>
-
-#### 多列联动
 
