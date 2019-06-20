@@ -1,12 +1,11 @@
 {
   "name": "vue-picker-mobile",
   "version": "0.1.0",
-  "private": true,
+  "main": "./lib/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name xml_picker --dest lib"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^2.6.5",
