@@ -9,11 +9,11 @@
 <img src='./src/assets/d1.gif' width="200px"/>
 
 #### 两列联动
-<img src='./src/assets/d2.gif' width="200px" style=float:left/>
+<img src='./src/assets/d2.gif' width="200px" style="float:left"/>
 
 ## 多列
 #### 多列非联动
 <img src='./src/assets/m1.gif' width="200px"/>
 
 #### 多列联动
-<img src='./src/assets/m2.gif' width="200px" style=float:left/>
+<img src='./src/assets/m2.gif' width="200px" style="float:left"/>
