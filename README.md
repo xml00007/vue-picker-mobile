@@ -8,7 +8,7 @@
 
 ## 两列
 #### 两列非联动             两列联动
-<img src='./src/assets/d1.gif' width="200px" margin-right=20px/><img src='./src/assets/d2.gif' width="200px"/>
+<img src='./src/assets/d1.gif' width="200px" margin-right="20px"/><img src='./src/assets/d2.gif' width="200px"/>
 
 
 ## 多列
