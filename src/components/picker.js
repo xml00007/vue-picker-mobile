@@ -1,4 +1,4 @@
-import group from './group';
+import group from './Group';
 import * as util from './util';
 
 export default {

@@ -42,6 +42,13 @@ export default {
 
 列表的数据源
 
+### isShow
+
+- Type: `Boolean` 
+- Default: `false`
+
+是否展示下拉列表
+
 ### defaultValue
 
 - Type: `Array` 
@@ -63,12 +70,6 @@ export default {
 
 列表是否联动
 
-### isShow
-
-- Type: `Boolean` 
-- Default: `false`
-
-是否展示下拉列表
 
 
 
