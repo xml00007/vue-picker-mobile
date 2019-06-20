@@ -1,5 +1,5 @@
 # vue-picker-mobile
-一款操作简单的移动端列表选择器，支持单列、多列，联动、非联动，配有详细的案列
+一款操作简单的移动端列表选择器，支持单列、多列，联动、非联动，配有详细的Demo
 
 ## Demo
 ### 单列.gif
@@ -11,8 +11,8 @@
 
 
 ### 多列
-#### 多列非联动&&&&联动
-<img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/>
+#### 多列非联动&&&&联动&&时间列表
+<img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
 
