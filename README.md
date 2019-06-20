@@ -68,7 +68,7 @@ export default {
 - Type: `Boolean` 
 - Default: `false`
 
-展示下拉列表
+是否展示下拉列表
 
 
 
