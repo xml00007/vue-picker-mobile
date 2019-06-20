@@ -26,76 +26,86 @@
                 :defaultValue="defaultValue5" :show.sync="show5"></Picker>
         <Picker @onChange="onChange" :isMulti="isMulti6" :isRelate="isRelate6" :list="list6"
                 :defaultValue="defaultValue6" :show.sync="show6"></Picker>
+
+        <div class="tips">
+            <p>默认值: {{defaultValue}}</p>
+            <p>当前选中值:{{result}}</p>
+        </div>
     </div>
 </template>
 
 <script>
-  import Picker from './components/Picker.vue';
+    import Picker from './components/Picker.vue';
 
-  import single from './data/single';
-  import double1 from './data/double1';
-  import double2 from './data/double2';
-  import date from './data/date';
-  import multiple1 from './data/multiple1';
-  import multiple2 from './data/multiple2';
+    import single from './data/single';
+    import double1 from './data/double1';
+    import double2 from './data/double2';
+    import date from './data/date';
+    import multiple1 from './data/multiple1';
+    import multiple2 from './data/multiple2';
 
-  export default {
-    name: 'app',
-    data() {
-      return {
-        show1: false,
-        show2: false,
-        show3: false,
-        show4: false,
-        show5: false,
-        show6: false,
+    export default {
+        name: 'app',
+        data() {
+            return {
+                show1: false,
+                show2: false,
+                show3: false,
+                show4: false,
+                show5: false,
+                show6: false,
 
-        list1: single,
-        defaultValue1: [3],
-        isMulti1: false,
+                list1: single,
+                defaultValue1: [3],
+                isMulti1: false,
 
-        list2: double1,
-        defaultValue2: ['3', 'A'],
-        isMulti2: true,
+                list2: double1,
+                defaultValue2: ['3', 'A'],
+                isMulti2: true,
 
-        list3: double2,
-        isRelate3: true,
-        defaultValue3: ['grade2', 'class2'],
-        isMulti3: true,
+                list3: double2,
+                isRelate3: true,
+                defaultValue3: ['grade2', 'class2'],
+                isMulti3: true,
 
-        list4: date,
-        defaultValue4: [2000, 5, 7],
-        isMulti4: true,
-        isRelate4: true,
+                list4: date,
+                defaultValue4: [2000, 5, 7],
+                isMulti4: true,
+                isRelate4: true,
 
-        list5: multiple1,
-        defaultValue5: ['3', 'C', 'B', 'A'],
-        isMulti5: true,
-        isRelate5: true,
+                list5: multiple1,
+                defaultValue5: ['3', 'C', 'B', 'A'],
+                isMulti5: true,
+                isRelate5: true,
 
-        list6: multiple2,
-        defaultValue6: [0, 1, 1, 0],
-        isMulti6: true,
-        isRelate6: true,
-      };
-    },
-    methods: {
-      onChange(res) {
-        let r = [];
-        res.map(i => {
-          r.push(i.label);
-        });
-        console.log('app-----res-----:', r.join('-'));
-      },
-      onClick(num) {
-        const prop = 'show' + num;
-        this[prop] = !this[prop];
-      },
-    },
-    components: {
-      Picker,
-    },
-  };
+                list6: multiple2,
+                defaultValue6: [0, 1, 1, 0],
+                isMulti6: true,
+                isRelate6: true,
+
+                result: '',
+                defaultValue: null
+            };
+        },
+        methods: {
+            onChange(res) {
+                let r = [];
+                res.map(i => {
+                    r.push(i.label);
+                });
+                this.result = r.join('-');
+                console.log('app-----res-----:', r.join('-'));
+            },
+            onClick(num) {
+                this.defaultValue = this['defaultValue' + num];
+                const prop = 'show' + num;
+                this[prop] = !this[prop];
+            },
+        },
+        components: {
+            Picker,
+        },
+    };
 </script>
 
 <style>
@@ -119,7 +129,7 @@
         font-size: 2em;
     }
 
-    p {
+    .bg > p {
         /*animation: blue 1.5s ease-in-out infinite alternate;*/
         text-shadow: 0 0 5px #fff,
         0 0 10px #fff,
@@ -146,9 +156,10 @@
         flex: 1;
         font-size: 16px;
         border-radius: 2px;
-        box-shadow:none;
+        box-shadow: none;
         margin-right: 15px;
     }
+
     .btnList input.choose {
         color: #228DFF;
         box-shadow: 5px 5px 5px #228DFF;
@@ -156,6 +167,14 @@
 
     .btnList input:last-child {
         margin-right: 0;
+    }
+
+    .tips {
+        margin-top: 16px;
+    }
+
+    .tips p {
+        margin-bottom: 16px;
     }
 
     @keyframes blue {

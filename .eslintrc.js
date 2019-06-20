@@ -1,5 +1,6 @@
 module.export = {
-  'rules': {
-    'no-console': 'off',
-  },
+    'rules': {
+        'no-console': 'off',
+        'parser': 'babel-eslint'
+    },
 };
