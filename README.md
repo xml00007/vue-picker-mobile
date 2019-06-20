@@ -3,16 +3,16 @@
 
 ## Demo
 ### 单列.gif
-<img src='./src/assets/s1.gif' width="200px"/>
+<img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/s1.gif' width="200px"/>
 
 ### 两列
 #### 非联动&&&&联动
-<img src='./src/assets/d1.gif' width="200px" hspace="20"/><img src='./src/assets/d2.gif' width="200px"/>
+<img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/d1.gif' width="200px" hspace="20"/><img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/d2.gif' width="200px"/>
 
 
 ### 多列
 #### 多列非联动&&&&联动&&时间列表
-<img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
+<img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/m1.gif' width="200px" hspace="20"/> <img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/m2.gif' width="200px"/><img src='https://github.com/xml00007/vue-picker-mobile/blob/master/src/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
 

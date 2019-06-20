@@ -7,6 +7,10 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
+  "files": [
+    "lib",
+    "./src/assets"
+  ],
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10"
