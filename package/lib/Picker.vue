@@ -1,4 +1,4 @@
-<script src="./picker.js"></script>
+<script src="picker.js"></script>
 <template>
     <div>
         <transition name="fade-mask">
