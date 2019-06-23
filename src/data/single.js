@@ -4,11 +4,11 @@ export default [
     value: 0,
   }, {
     label: '初中',
-    disabled: true,
+    // disabled: true,
     value: 1,
   }, {
     label: '高中',
-    disabled: true,
+    // disabled: true,
     value: 2,
   }, {
     label: '本科',

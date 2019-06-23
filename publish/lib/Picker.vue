@@ -25,6 +25,9 @@
 
     export default {
         name: 'Picker',
+        provide: {
+            height: 34
+        },
         props: {
             defaultValue: {
                 type: Array,

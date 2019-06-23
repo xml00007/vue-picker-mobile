@@ -1,5 +1,7 @@
 <template>
-    <div class="group" ref="group">
+    <div class="group" @touchstart.stop.passive="_start($event)" @touchmove.stop.passive="_move($event)"
+         @touchend.stop.passive="_end($event)"
+         ref="group">
         <div class="group-mask"></div>
         <div class="group-indicator"></div>
         <div class="group-content" :style="styleObject" ref="content">
@@ -15,6 +17,7 @@
 
     export default {
         name: 'group',
+        inject: ['height'],
         props: {
             items: {
                 type: Array,
@@ -27,8 +30,8 @@
         data() {
             return {
                 offset: 3,
-                rowHeight: 34,
-                bodyHeight: 7 * 34,
+                rowHeight: this.height,
+                bodyHeight: 7 * this.rowHeight,
                 $scrollable: null,
                 translate: 0,
                 time: .3,
@@ -66,14 +69,6 @@
             this.emitChange(this.items[index], index);
             this.setTranslate(this.translate);
 
-            const el = this.$refs['group'];
-            // 定义滚动事件
-            [['touchstart', this._start], ['touchmove', this._move], ['touchend', this._end]].map((i) => {
-                el.addEventListener(i[0], (evt) => {
-                    i[1](evt.changedTouches[0].pageY);
-                    evt.preventDefault();
-                }, {passive: false});
-            });
             util.eventBus.$on('changeDefaultItem', (res) => {
                 if (res.includes(this.col)) {
                     this.translate = this.offset * this.rowHeight;
@@ -122,7 +117,7 @@
                 // 触发选择事件
                 this.emitChange(this.items[index], index, false);
             },
-            _end(pageY) {
+            _end(evt) {
                 if (!this.start) return;
 
                 /**
@@ -136,7 +131,7 @@
                 const endTime = new Date().getTime();
                 const windowHeight = window.innerHeight;                    // 屏幕的高度
                 const relativeY = windowHeight - (this.bodyHeight / 2);
-                this.end = pageY;
+                this.end = evt.changedTouches[0].pageY;
 
                 // 如果上次时间距离松开手的时间超过 100ms, 则停止了, 没有惯性滑动
                 if (endTime - this.startTime > 100) {
@@ -172,13 +167,13 @@
 
                 this.start = null;
             },
-            _start(pageY) {
-                this.start = pageY;
+            _start(evt) {
+                this.start = evt.changedTouches[0].pageY;
                 this.startTime = +new Date();
             },
 
-            _move(pageY) {
-                this.end = pageY;
+            _move(evt) {
+                this.end = evt.changedTouches[0].pageY;
                 const diff = this.end - this.start;
                 this.setTransition(0);
                 this.setTranslate(this.translate + diff);
