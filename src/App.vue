@@ -35,8 +35,9 @@
 </template>
 
 <script>
-    import Picker from './components/Picker.vue';
-
+    // import Picker from './components/Picker.vue';
+    // import Picker from '../publish/lib/Picker.vue';
+    import Picker from '../publish';
     import single from './data/single';
     import double1 from './data/double1';
     import double2 from './data/double2';
@@ -103,7 +104,7 @@
             },
         },
         components: {
-            Picker,
+            Picker:Picker,
         },
     };
 </script>

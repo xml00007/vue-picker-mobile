@@ -1,8 +1,8 @@
 {
   "name": "vue-picker-mobile",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "一款简单的、支持单列多列的、联动非联动的列表选择器",
-  "main": "./lib/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,8 +19,5 @@
   "bugs": {
     "url": "https://github.com/xml00007/vue-picker-mobile/issues"
   },
-  "homepage": "https://github.com/xml00007/vue-picker-mobile#readme",
-  "directories": {
-    "lib": "lib"
-  }
+  "homepage": "https://github.com/xml00007/vue-picker-mobile#readme"
 }

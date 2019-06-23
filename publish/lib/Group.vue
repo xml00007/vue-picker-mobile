@@ -33,9 +33,9 @@
                 translate: 0,
                 time: .3,
                 // 绑定滚动事件
-                start: null,                                                  // 保存开始按下的位置
-                end: null,                                               // 保存结束时的位置
-                startTime: null,                                             // 开始触摸的时间
+                start: null,                                       // 保存开始按下的位置
+                end: null,                                         // 保存结束时的位置
+                startTime: null,                                   // 开始触摸的时间
                 points: [],                                        // 记录移动点
                 col: 1,
                 styleObject: {
