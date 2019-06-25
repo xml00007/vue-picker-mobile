@@ -3,7 +3,7 @@
 
 ## Demo
 ### 单列 
-#### -------------默认值----------VS----:height="50" :className="redColor"
+#### -------------默认值----------VS----:height="40" :className="redColor"
 <img src='./src/assets/s1.gif' width="200px" hspace="20" /><img src='./src/assets/s2.gif' width="200px"/>
 
 ### 两列
