@@ -28,7 +28,8 @@
         provide() {
             return {
                 height: this.height,
-                row: this.row,
+                row: 7,  // 暂时不对外暴露，修改项较多
+                className:this.className
             }
         },
         props: {
@@ -55,9 +56,9 @@
                 type: Number,
                 default: 34,
             },
-            row: {
-                type: Number,
-                default: 7,
+            className: {
+                type: String,
+                default: '',
             },
         },
         data() {
@@ -69,7 +70,6 @@
             };
         },
         mounted() {
-            console.log("this.height", this.height)
             // 判断是单列
             if (!this.isMulti) {
                 this.listData = [this.list];

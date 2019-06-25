@@ -1,11 +1,12 @@
 <template>
     <div class="group" @touchstart.prevent="_start($event)" @touchmove.prevent="_move($event)"
          @touchend.prevent="_end($event)"
+         :style="{height:(row*height)+'px','font-size': (height/2)+'px'}"
          ref="group">
         <div class="group-line"></div> <!--划线 单纯的分割线 后面再优化-->
         <ul class="group-content" :style="styleObject" ref="content">
             <li v-for="(item,index) in items" :key="index" class="group-item"
-                :class="{'group-item_disabled':item.disabled}">
+                :class="[className,{'group-item_disabled':item.disabled}]">
                 {{ item.label}}
             </li>
         </ul>
@@ -16,7 +17,7 @@
 
     export default {
         name: 'group',
-        inject: ['height', 'row'],
+        inject: ['height', 'row', 'className'],
         props: {
             items: {
                 type: Array,
@@ -45,9 +46,6 @@
             };
         },
         mounted() {
-            console.log('this.height', this.height)
-            console.log('this.row', this.row)
-            console.log('this.offset', this.offset)
             this.$scrollable = this.$refs['content'];
             this.col = parseInt(this.$refs['group'].dataset.col || 1);
             // 首次触发选中事件
@@ -186,7 +184,6 @@
     .group {
         flex: 1;
         position: relative;
-        height: 238px
     }
 
     .group:before {
@@ -199,7 +196,7 @@
         z-index: 3;
         background: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .5)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .5));
         background-position: top, bottom;
-        background-size: 100% 102px;
+        background-size: 100% 6em;
         background-repeat: no-repeat;
         transform: translateZ(0);
     }
@@ -221,14 +218,14 @@
     }
 
     .group-line:before {
-        top: 102px;
+        top: 6em;
         border-top: 1px solid #e5e5e5;
         transform-origin: 0 0;
         transform: scaleY(.5)
     }
 
     .group-line:after {
-        bottom: 102px;
+        bottom: 6em;
         border-bottom: 1px solid #e5e5e5;
         transform-origin: 0 100%;
         transform: scaleY(.5)
@@ -236,10 +233,9 @@
 
     .group-item {
         padding: 0;
-        height: 34px;
-        line-height: 34px;
+        height: 2em;
+        line-height: 2em;
         text-align: center;
-        color: #000;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden

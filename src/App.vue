@@ -14,7 +14,7 @@
             <input type="button" value="多列联动" :class="{choose:show6}" @click="onClick(6)">
         </div>
 
-        <Picker @onChange="onChange" :height="50" :row="5"  :isMulti="isMulti1" :list="list1"
+        <Picker @onChange="onChange" :height="40" :className="'redColor'" :isMulti="isMulti1" :list="list1"
                 :defaultValue="defaultValue1" :show.sync="show1"></Picker>
         <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2"
                 :defaultValue="defaultValue2" :show.sync="show2"></Picker>
@@ -197,5 +197,14 @@
             0 0 50px #228DFF,
             0 0 75px #228DFF;
         }
+    }
+
+    .redColor {
+        color: red;
+        font-family: "PingFang SC";
+        font-weight: normal;
+        /*font-size:18px;*/
+        /*line-height: 40px;*/
+        /*height: 40px;*/
     }
 </style>

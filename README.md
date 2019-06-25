@@ -2,16 +2,16 @@
 一款操作简单的移动端列表选择器，支持单列、多列，联动、非联动，配有详细的Demo
 
 ## Demo
-### 单列.gif
-<img src='./src/assets/s1.gif' width="200px"/>
+### 单列.gif 默认值 --------VS-------- :height="50" :className="redColor"
+<img src='./src/assets/s1.gif' width="200px" hspace="20" /><img src='./src/assets/s2.gif' width="200px"/>
 
 ### 两列
-#### 非联动&&&&联动
+#### 非联动------------VS------------联动
 <img src='./src/assets/d1.gif' width="200px" hspace="20"/><img src='./src/assets/d2.gif' width="200px"/>
 
 
 ### 多列
-#### 多列非联动&&&&联动&&时间列表
+#### 非联动------------VS------------联动------------VS------------时间列表
 <img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
@@ -75,6 +75,20 @@ export default {
 - Default: `false`
 
 列表是否联动
+
+### height
+
+- Type: `Number` 
+- Default: `34`
+
+定义每一行的宽度 默认值为34px
+
+### className
+
+- Type: `String` 
+- Default: ``
+
+会动态每一行上添加一个自定义类名，来进行字体格式等的修改
 
 ## Events
     
