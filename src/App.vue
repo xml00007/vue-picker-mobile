@@ -14,7 +14,7 @@
             <input type="button" value="多列联动" :class="{choose:show6}" @click="onClick(6)">
         </div>
 
-        <Picker @onChange="onChange" :isMulti="isMulti1" :list="list1"
+        <Picker @onChange="onChange" :height="50" :row="5"  :isMulti="isMulti1" :list="list1"
                 :defaultValue="defaultValue1" :show.sync="show1"></Picker>
         <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2"
                 :defaultValue="defaultValue2" :show.sync="show2"></Picker>
@@ -55,7 +55,7 @@
                 show6: false,
 
                 list1: single,
-                defaultValue1: [3],
+                defaultValue1: [2],
                 isMulti1: false,
 
                 list2: double1,

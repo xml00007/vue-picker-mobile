@@ -1,15 +1,14 @@
 <template>
-    <div class="group" @touchstart.stop.passive="_start($event)" @touchmove.stop.passive="_move($event)"
-         @touchend.stop.passive="_end($event)"
+    <div class="group" @touchstart.prevent="_start($event)" @touchmove.prevent="_move($event)"
+         @touchend.prevent="_end($event)"
          ref="group">
-        <div class="group-mask"></div>
-        <div class="group-indicator"></div>
-        <div class="group-content" :style="styleObject" ref="content">
-            <div v-for="(item,index) in items" :key="index" class="group-item"
-                 :class="{'group-item_disabled':item.disabled}">
+        <div class="group-line"></div> <!--划线 单纯的分割线 后面再优化-->
+        <ul class="group-content" :style="styleObject" ref="content">
+            <li v-for="(item,index) in items" :key="index" class="group-item"
+                :class="{'group-item_disabled':item.disabled}">
                 {{ item.label}}
-            </div>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -17,7 +16,7 @@
 
     export default {
         name: 'group',
-        inject: ['height'],
+        inject: ['height', 'row'],
         props: {
             items: {
                 type: Array,
@@ -29,9 +28,7 @@
         },
         data() {
             return {
-                offset: 3,
-                rowHeight: this.height,
-                bodyHeight: 7 * this.rowHeight,
+                offset: Math.floor(this.row / 2),
                 $scrollable: null,
                 translate: 0,
                 time: .3,
@@ -48,6 +45,9 @@
             };
         },
         mounted() {
+            console.log('this.height', this.height)
+            console.log('this.row', this.row)
+            console.log('this.offset', this.offset)
             this.$scrollable = this.$refs['content'];
             this.col = parseInt(this.$refs['group'].dataset.col || 1);
             // 首次触发选中事件
@@ -60,10 +60,11 @@
                 });
                 index = values.findIndex(i => i === this.defaultValue);
                 index = index >= 0 ? index : util.getDefaultIndex(this.items);
-                this.translate = (this.offset - index) * this.rowHeight;
+                console.log('this.offset - index', this.offset, index)
+                this.translate = (this.offset - index) * this.height;
             } else {
                 index = util.getDefaultIndex(this.items);
-                this.translate = util.getDefaultTranslate(this.offset, this.rowHeight,
+                this.translate = util.getDefaultTranslate(this.offset, this.height,
                     this.items);
             }
             this.emitChange(this.items[index], index);
@@ -71,7 +72,7 @@
 
             util.eventBus.$on('changeDefaultItem', (res) => {
                 if (res.includes(this.col)) {
-                    this.translate = this.offset * this.rowHeight;
+                    this.translate = this.offset * this.height;
                     this.setTranslate(this.translate);
                     this.$nextTick(() => {
                         this.emitChange(this.items[0], 0);
@@ -93,9 +94,9 @@
                 this.translate += diff;
 
                 // 移动到最接近的那一行
-                this.translate = Math.round(this.translate / this.rowHeight) * this.rowHeight;
-                const max = util.getMax(this.offset, this.rowHeight);
-                const min = util.getMin(this.offset, this.rowHeight,
+                this.translate = Math.round(this.translate / this.height) * this.height;
+                const max = util.getMax(this.offset, this.height);
+                const min = util.getMin(this.offset, this.height,
                     this.items.length);
                 // 不要超过最大值或者最小值
                 if (this.translate > max) {
@@ -106,11 +107,11 @@
                 }
 
                 // 如果是 disabled 的就跳过
-                let index = this.offset - this.translate / this.rowHeight;
+                let index = this.offset - this.translate / this.height;
                 while (!!this.items[index] && this.items[index].disabled) {
                     diff > 0 ? ++index : --index;
                 }
-                this.translate = (this.offset - index) * this.rowHeight;
+                this.translate = (this.offset - index) * this.height;
                 this.setTransition(.3);
                 this.setTranslate(this.translate);
 
@@ -119,20 +120,10 @@
             },
             _end(evt) {
                 if (!this.start) return;
-
-                /**
-                 * 思路:
-                 * 0. touchstart 记录按下的点和时间
-                 * 1. touchmove 移动时记录前 40个经过的点和时间
-                 * 2. touchend 松开手时, 记录该点和时间. 如果松开手时的时间, 距离上一次 move时的时间超过 100ms, 那么认为停止了, 不执行惯性滑动
-                 *    如果间隔时间在 100ms 内, 查找 100ms 内最近的那个点, 和松开手时的那个点, 计算距离和时间差, 算出速度
-                 *    速度乘以惯性滑动的时间, 例如 300ms, 计算出应该滑动的距离
-                 */
                 const endTime = new Date().getTime();
                 const windowHeight = window.innerHeight;                    // 屏幕的高度
                 const relativeY = windowHeight - (this.bodyHeight / 2);
                 this.end = evt.changedTouches[0].pageY;
-
                 // 如果上次时间距离松开手的时间超过 100ms, 则停止了, 没有惯性滑动
                 if (endTime - this.startTime > 100) {
                     //如果end和start相差小于10，则视为
@@ -184,46 +175,43 @@
                 }
             },
         },
+        computed: {
+            bodyHeight: function () {
+                return 7 * this.height
+            },
+        }
     };
 </script>
 <style scoped>
     .group {
         flex: 1;
         position: relative;
-        height: 100%
+        height: 238px
     }
 
-    .group-mask {
+    .group:before {
+        content: '';
+        position: absolute;
+        left: 0;
         top: 0;
+        width: 100%;
         height: 100%;
-        margin: 0 auto;
+        z-index: 3;
         background: linear-gradient(180deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .5)), linear-gradient(0deg, hsla(0, 0%, 100%, .95), hsla(0, 0%, 100%, .5));
         background-position: top, bottom;
         background-size: 100% 102px;
         background-repeat: no-repeat;
-        transform: translateZ(0)
+        transform: translateZ(0);
     }
 
-    .group-indicator, .group-mask {
-        position: absolute;
+    .group-content {
+        position: relative;
+        top: 0;
         left: 0;
         width: 100%;
-        z-index: 3
     }
 
-    .group-indicator {
-        height: 34px;
-        top: 102px
-    }
-
-    .group-indicator:before {
-        top: 0;
-        border-top: 1px solid #e5e5e5;
-        transform-origin: 0 0;
-        transform: scaleY(.5)
-    }
-
-    .group-indicator:after, .group-indicator:before {
+    .group-line:after, .group-line:before {
         content: "";
         position: absolute;
         left: 0;
@@ -232,18 +220,18 @@
         color: #e5e5e5
     }
 
-    .group-indicator:after {
-        bottom: 0;
-        border-bottom: 1px solid #e5e5e5;
-        transform-origin: 0 100%;
+    .group-line:before {
+        top: 102px;
+        border-top: 1px solid #e5e5e5;
+        transform-origin: 0 0;
         transform: scaleY(.5)
     }
 
-    .group-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%
+    .group-line:after {
+        bottom: 102px;
+        border-bottom: 1px solid #e5e5e5;
+        transform-origin: 0 100%;
+        transform: scaleY(.5)
     }
 
     .group-item {

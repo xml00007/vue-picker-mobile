@@ -4,7 +4,7 @@
             <div v-if="show" class="mask"></div>
         </transition>
         <transition name="fade">
-            <div v-if="show" class="picker" :class="slide">
+            <div v-if="show" class="picker">
                 <div class="picker-title">
                     <label class="action" @click="onClick('cancel')">取消</label>
                     <label class="action" @click="onClick('confirm')">确定</label>
@@ -25,18 +25,14 @@
 
     export default {
         name: 'Picker',
-        provide: {
-            height: 34
+        provide() {
+            return {
+                height: this.height,
+                row: this.row,
+            }
         },
         props: {
-            defaultValue: {
-                type: Array,
-            },
-            isRelate: {
-                type: Boolean,
-                default: false,
-            },
-            isMulti: {
+            show: {
                 type: Boolean,
                 default: false,
             },
@@ -44,15 +40,28 @@
                 type: Array,
                 default: [],
             },
-            show: {
+            defaultValue: {
+                type: Array,
+            },
+            isMulti: {
                 type: Boolean,
                 default: false,
+            },
+            isRelate: {
+                type: Boolean,
+                default: false,
+            },
+            height: {
+                type: Number,
+                default: 34,
+            },
+            row: {
+                type: Number,
+                default: 7,
             },
         },
         data() {
             return {
-                mask: false,
-                slide: false,
                 lineTemp: {},
                 listData: [],
                 res: [],
@@ -60,6 +69,7 @@
             };
         },
         mounted() {
+            console.log("this.height", this.height)
             // 判断是单列
             if (!this.isMulti) {
                 this.listData = [this.list];
@@ -190,7 +200,6 @@
         display: flex;
         position: relative;
         background-color: #fff;
-        height: 238px;
         overflow: hidden
     }
 
