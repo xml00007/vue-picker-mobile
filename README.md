@@ -3,16 +3,16 @@
 
 ## Demo
 ### 单列 
-#### ------默认值---------VS--------- :height="50" :className="redColor"
+#### -------------默认值----------VS----:height="50" :className="redColor"
 <img src='./src/assets/s1.gif' width="200px" hspace="20" /><img src='./src/assets/s2.gif' width="200px"/>
 
 ### 两列
-#### ------非联动---------VS---------联动
+#### -------------非联动----------VS-----------联动-------------
 <img src='./src/assets/d1.gif' width="200px" hspace="20"/><img src='./src/assets/d2.gif' width="200px"/>
 
 
 ### 多列
-#### ------非联动---------VS---------联动---------VS---------时间列表
+#### -------------非联动----------VS-----------联动-------------VS-----------时间列表-----------
 <img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
