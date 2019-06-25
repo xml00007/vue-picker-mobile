@@ -106,7 +106,7 @@ onChange(res){
 
 ## Update
 ### 0.1.8
-添加props: height className
-height可自定义列表的高度
-className 可从外部动态为每一列添加一个自定义类名
+添加props: height className    
+height: 可自定义列表的高度   
+className: 可从外部动态为每一列添加一个自定义类名
 
