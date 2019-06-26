@@ -4,16 +4,16 @@
 ## Demo
 ### 单列 
 #### -------------默认值----------VS----:height="40" :className="redColor"
-<img src='./src/assets/s1.gif' width="200px" hspace="20" /><img src='./src/assets/s2.gif' width="200px"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/s1.gif' width="200px" hspace="20" /><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/s2.gif' width="200px"/>
 
 ### 两列
 #### -------------非联动----------VS-----------联动-------------
-<img src='./src/assets/d1.gif' width="200px" hspace="20"/><img src='./src/assets/d2.gif' width="200px"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/d1.gif' width="200px" hspace="20"/><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/d2.gif' width="200px"/>
 
 
 ### 多列
 #### -------------非联动----------VS-----------联动-------------VS-----------时间列表-----------
-<img src='./src/assets/m1.gif' width="200px" hspace="20"/> <img src='./src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/m1.gif' width="200px" hspace="20"/> <img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
 
@@ -105,6 +105,9 @@ onChange(res){
 ```
 
 ## Update
+### 0.1.81
+修改npmjs主页说明，以及图片显示不出来的问题
+
 ### 0.1.8
 添加props: height className
 height可自定义列表的高度
