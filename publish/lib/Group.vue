@@ -23,7 +23,7 @@
                 type: Array,
             },
             defaultValue: {
-                type: Number | String,
+                type: [ Number, String ],
                 default: null,
             },
         },

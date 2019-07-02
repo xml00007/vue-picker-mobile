@@ -49,7 +49,7 @@
                 show6: false,
 
                 list1: single,
-                defaultValue1: '3',
+                defaultValue1: 3,
                 isMulti1: false,
 
                 list2: double1,

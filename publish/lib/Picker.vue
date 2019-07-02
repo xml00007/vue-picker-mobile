@@ -42,7 +42,7 @@
                 default: [],
             },
             defaultValue: {
-                type: String | Array,
+                type: [String,Number, Array],
             },
             isMulti: {
                 type: Boolean,
