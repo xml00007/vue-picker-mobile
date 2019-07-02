@@ -49,19 +49,19 @@
             this.$scrollable = this.$refs['content'];
             this.col = parseInt(this.$refs['group'].dataset.col || 1);
             // 首次触发选中事件
-            // 如果有缓存的选项，则用缓存的选项，否则使用中间值。
+            // 如果有缓存的选项，则用缓存的选项，否则使用第一项。
             let index = 0;
             const defaultValue = this.defaultValue;
+            console.log('defaultValue', defaultValue)
             if (defaultValue !== null) {
                 const values = this.items.map((item) => {
                     return item.value;
                 });
-                index = values.findIndex(i => i === this.defaultValue);
-                index = index >= 0 ? index : util.getDefaultIndex(this.items);
-                console.log('this.offset - index', this.offset, index)
+                index = values.findIndex(i => i === defaultValue);
+                // 默认值如果和值匹配上 则滚动到默认值，否则如果是数字则判断为索引
+                index = index >= 0 ? index : defaultValue === +defaultValue ? defaultValue : 0;
                 this.translate = (this.offset - index) * this.height;
             } else {
-                index = util.getDefaultIndex(this.items);
                 this.translate = util.getDefaultTranslate(this.offset, this.height,
                     this.items);
             }

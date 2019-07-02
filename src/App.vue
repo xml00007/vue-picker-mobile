@@ -14,18 +14,12 @@
             <input type="button" value="多列联动" :class="{choose:show6}" @click="onClick(6)">
         </div>
 
-        <Picker @onChange="onChange" :height="40" :className="'redColor'" :isMulti="isMulti1" :list="list1"
-                :defaultValue="defaultValue1" :show.sync="show1"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2"
-                :defaultValue="defaultValue2" :show.sync="show2"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti3" :isRelate="isRelate3" :list="list3"
-                :defaultValue="defaultValue3" :show.sync="show3"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti4" :isRelate="isRelate4" :list="list4"
-                :defaultValue="defaultValue4" :show.sync="show4"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti5" :list="list5"
-                :defaultValue="defaultValue5" :show.sync="show5"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti6" :isRelate="isRelate6" :list="list6"
-                :defaultValue="defaultValue6" :show.sync="show6"></Picker>
+        <Picker @onChange="onChange" :height="40" :className="'redColor'" :defaultValue="defaultValue1"  :isMulti="isMulti1" :list="list1" :show.sync="show1"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2" :defaultValue="defaultValue2" :show.sync="show2"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti3" :isRelate="isRelate3" :list="list3" :defaultValue="defaultValue3"  :show.sync="show3"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti4" :isRelate="isRelate4" :list="list4" :defaultValue="defaultValue4" :show.sync="show4"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti5" :list="list5" :defaultValue="defaultValue5" :show.sync="show5"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti6" :isRelate="isRelate6" :list="list6" :defaultValue="defaultValue6" :show.sync="show6"></Picker>
 
         <div class="tips">
             <p>默认值: {{defaultValue}}</p>
@@ -55,7 +49,7 @@
                 show6: false,
 
                 list1: single,
-                defaultValue1: [2],
+                defaultValue1: '3',
                 isMulti1: false,
 
                 list2: double1,
@@ -64,7 +58,7 @@
 
                 list3: double2,
                 isRelate3: true,
-                defaultValue3: ['grade2', 'class2'],
+                defaultValue3: 'grade2',
                 isMulti3: true,
 
                 list4: date,
@@ -73,12 +67,12 @@
                 isRelate4: true,
 
                 list5: multiple1,
-                defaultValue5: ['3', 'C', 'B', 'A'],
+                defaultValue5: '2',
                 isMulti5: true,
                 isRelate5: true,
 
                 list6: multiple2,
-                defaultValue6: [0, 1, 1, 0],
+                defaultValue6: [1,0,1],
                 isMulti6: true,
                 isRelate6: true,
 

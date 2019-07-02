@@ -1,6 +1,6 @@
 {
   "name": "vue-picker-mobile",
-  "version": "0.1.81",
+  "version": "0.1.82",
   "description": "一款简单的、支持单列多列的、联动非联动的列表选择器",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/xml00007/vue-picker-mobile.git"
   },
   "keywords": [
-    "vue2.0",
+    "vue2.x",
     "vue-picker-mobile"
   ],
   "author": "信明良",

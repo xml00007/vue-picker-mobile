@@ -10,7 +10,7 @@
                     <label class="action" @click="onClick('confirm')">确定</label>
                 </div>
                 <div class="picker-list">
-                    <group :defaultValue="defaultValue[index]" @onChange="onChange" v-for="(items,index) in listData"
+                    <group :defaultValue="defaultVal[index]" @onChange="onChange" v-for="(items,index) in listData"
                            :data-col="index" :items="items"
                            :key="index"></group>
                 </div>
@@ -29,7 +29,7 @@
             return {
                 height: this.height,
                 row: 7,  // 暂时不对外暴露，修改项较多
-                className:this.className
+                className: this.className
             }
         },
         props: {
@@ -42,7 +42,7 @@
                 default: [],
             },
             defaultValue: {
-                type: Array,
+                type: String | Array,
             },
             isMulti: {
                 type: Boolean,
@@ -67,7 +67,31 @@
                 listData: [],
                 res: [],
                 def: [],
+                defaultVal: []
             };
+        },
+        created() {
+            // 计算真正的length
+            let length = 1;
+            if (!this.isMulti) {
+
+            } else if (this.isMulti && !this.isRelate) {
+                length = this.list.length;
+            } else {
+                length = util.getDepth(this.list[0])
+            }
+            if (this.defaultValue && Array.isArray(this.defaultValue) && this.defaultValue.length === length) {
+                this.defaultVal = this.defaultValue;
+            } else if (!this.defaultValue) {
+                // 默认都是一项
+                this.defaultVal = new Array(length).fill(0)
+            } else if (!Array.isArray(this.defaultValue)) {
+                const def = new Array(length).fill(0);
+                def.splice(0, 1, this.defaultValue);
+                this.defaultVal = def
+            } else if (this.defaultValue.length < length) {
+                this.defaultVal = [].concat(this.defaultValue, new Array(length - this.defaultValue.length).fill(0))
+            }
         },
         mounted() {
             // 判断是单列
@@ -80,7 +104,7 @@
             }
             // 判断多列且联动
             else {
-                const def = this.defaultValue.slice();
+                const def = this.defaultVal.slice();
                 this.listData = [this.list].concat(
                     util.getDefault(this.list, def));
             }
@@ -94,7 +118,7 @@
                 // 联动数据并且是非首次渲染的数据
                 if (this.isMulti && this.isRelate && !isInit) {
                     const emit = [];
-                    const def = this.defaultValue.map((i, index) => {
+                    const def = this.defaultVal.map((i, index) => {
                         if (index > col) {
                             emit.push(index);
                         }
@@ -131,6 +155,7 @@
                 this.$emit('update:show', false);
             },
         },
+        computed: {},
         components: {
             group,
         },

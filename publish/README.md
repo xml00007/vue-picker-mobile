@@ -56,35 +56,36 @@ export default {
 
 是否展示下拉列表
 
-### defaultValue
+### defaultValue(非必填)
 
 - Type: `Array` 
-- Default: `[]`
+- Default: ``  
+- 支持字符串或者数组，     单列时 字符串数组均可；      多列时以下设置均可 '3'、['3']、['3', 'C']、['3', 'C', 'B']、['3', 'C', 'B', 'A']     当默认值个数小于列数时，没有默认值的列，默认第一项为默认值
 
 列表的默认滚动位置
 
-### isMulti
+### isMulti(非必填)
 
 - Type: `Boolean` 
 - Default: `false`
 
 列表是单列还是多列
 
-### isRelate
+### isRelate(非必填)
 
 - Type: `Boolean` 
 - Default: `false`
 
 列表是否联动
 
-### height
+### height(非必填)
 
 - Type: `Number` 
 - Default: `34`
 
 定义每一行的宽度 默认值为34px
 
-### className
+### className(非必填)
 
 - Type: `String` 
 - Default: ``
@@ -105,6 +106,12 @@ onChange(res){
 ```
 
 ## Update
+### 0.1.83
+修改对默认值的限制，之前默认值是必传的，现在默认值可传多种格式 
++ 不管多少列，如果没有默认值则默认第一项
++ 如果有默认值，但是默认值个数少于列数，则缺失的默认值自动默认为第一项
++ 默认值单个时可以为字符串，多于一个请设置为数组
+
 ### 0.1.81
 修改npmjs主页说明，以及图片显示不出来的问题
 
