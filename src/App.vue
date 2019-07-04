@@ -14,12 +14,18 @@
             <input type="button" value="多列联动" :class="{choose:show6}" @click="onClick(6)">
         </div>
 
-        <Picker @onChange="onChange" :height="40" :className="'redColor'" :defaultValue="defaultValue1"  :isMulti="isMulti1" :list="list1" :show.sync="show1"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2" :defaultValue="defaultValue2" :show.sync="show2"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti3" :isRelate="isRelate3" :list="list3" :defaultValue="defaultValue3"  :show.sync="show3"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti4" :isRelate="isRelate4" :list="list4" :defaultValue="defaultValue4" :show.sync="show4"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti5" :list="list5" :defaultValue="defaultValue5" :show.sync="show5"></Picker>
-        <Picker @onChange="onChange" :isMulti="isMulti6" :isRelate="isRelate6" :list="list6" :defaultValue="defaultValue6" :show.sync="show6"></Picker>
+        <Picker @onChange="onChange" :height="40" :className="'redColor'" :defaultValue="defaultValue1"
+                :isMulti="isMulti1" :list="list1" :show.sync="show1"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti2" :list="list2" :defaultValue="defaultValue2"
+                :show.sync="show2"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti3" :isRelate="isRelate3" :list="list3"
+                :defaultValue="defaultValue3" :show.sync="show3"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti4" :isRelate="isRelate4" :list="list4"
+                :defaultValue="defaultValue4" :show.sync="show4"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti5" :list="list5" :defaultValue="defaultValue5"
+                :show.sync="show5"></Picker>
+        <Picker @onChange="onChange" :isMulti="isMulti6" :isRelate="isRelate6" :list="list6"
+                :defaultValue="defaultValue6" :show.sync="show6"></Picker>
 
         <div class="tips">
             <p>默认值: {{defaultValue}}</p>
@@ -30,11 +36,11 @@
 
 <script>
     import Picker from '../publish';
-    import single from './data/single';
-    import double1 from './data/double1';
+    import {single_label_value, single_only_value} from './data/single';
+    import {double1_label_value, double1_only_value} from './data/double1';
     import double2 from './data/double2';
     import date from './data/date';
-    import multiple1 from './data/multiple1';
+    import {multiple_label_value, multiple_only_value} from './data/multiple1';
     import multiple2 from './data/multiple2';
 
     export default {
@@ -48,11 +54,11 @@
                 show5: false,
                 show6: false,
 
-                list1: single,
+                list1: single_only_value, // 更换为数据格式为 single_label_value 也可以
                 defaultValue1: 3,
                 isMulti1: false,
 
-                list2: double1,
+                list2: double1_only_value,   // 更换为数据格式为 double1_label_value 也可以
                 defaultValue2: ['3', 'A'],
                 isMulti2: true,
 
@@ -66,13 +72,13 @@
                 isMulti4: true,
                 isRelate4: true,
 
-                list5: multiple1,
+                list5: multiple_label_value,
                 defaultValue5: '2',
                 isMulti5: true,
                 isRelate5: true,
 
                 list6: multiple2,
-                defaultValue6: [1,0,1],
+                defaultValue6: [1, 0, 1],
                 isMulti6: true,
                 isRelate6: true,
 
@@ -96,7 +102,7 @@
             },
         },
         components: {
-            Picker:Picker,
+            Picker: Picker,
         },
     };
 </script>

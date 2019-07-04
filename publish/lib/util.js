@@ -30,6 +30,33 @@ export const getDefault = (arr, defaultValue) => {
         getDefault(currentArr.children, defaultValue));
 };
 
+// 格式化数据
+export const normalizeData = (data) => {
+    if ((!Array.isArray(data)) || data.length === 0) {
+        throw new Error('数据格式错误，请检查数据格式');
+    }
+    // 多列模式
+    if (Array.isArray(data[0])) {
+        return data.map(i => {
+            return i.map(j => {
+                return {
+                    label: j,
+                    value: j
+                }
+
+            })
+        })
+        // 单列
+    } else {
+        return data.map(i => {
+            return {
+                label: i,
+                value: i
+            }
+        })
+    }
+};
+
 // 获取默认索引
 export const getDefaultIndex = (items) => {
     let current = Math.floor(items.length / 2);

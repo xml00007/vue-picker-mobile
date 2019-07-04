@@ -42,13 +42,14 @@ export default {
 - Default: `[]`
 
 列表的数据源,不同类型的数据操作略有差别，使用时请参考github
-  + [单列](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/single.js)
-  + [两列非联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/double1.js)
+  + [单列（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/single.js)
+  + [两列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/double1.js)
   + [两列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/double2.js)
-  + [多列非联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/multiple1.js)
+  + [多列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/multiple1.js)
   + [多列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/multiple2.js)
   + [日期](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/date.js)
-
+  
+注：为方便使用，修改了非联动模式的数据传递方式，如单列可传：['小学', '初中', '高中', '本科', '硕士', '博士'] (版本号 > 0.1.84)
 ### isShow
 
 - Type: `Boolean` 
@@ -59,9 +60,13 @@ export default {
 ### defaultValue(非必填)
 
 - Type: `Array` 
-- Default: ``  
-
-列表的默认滚动位置  支持字符串或者数组，单列时字符串数组均可，多列时以下设置均可 '3'、['3']、['3', 'C']、['3', 'C', 'B']、['3', 'C', 'B', 'A']。当默认值个数小于列数时，没有默认值的列第一项为默认值
+- Default: ``
+- 列表的默认滚动位置  
+    * 支持字符串或者数组     
+    * 单列时字符串数组均可，多列时以下设置均可 '3'、['3']、['3', 'C']、['3', 'C', 'B']、['3', 'C', 'B', 'A']   
+    * 当默认值个数小于列数时，没有默认值的列第一项为默认值   
+    * 当默认值没匹配到列表值并且为数字时，认为该数字为当前列表的索引，其索引指向值为默认值   
+     
 注：默认值是和{label:'一年级',value:'grade1'} 中的value一致的
 
 
@@ -107,6 +112,41 @@ onChange(res){
 ```
 
 ## Update
+### 0.1.85
+修改数据源格式的限制，之前数据源格式固定，如单列为：
+```javascript
+export const single_label_value = [
+    {
+        label: '小学',
+        value: 0,
+    }, {
+        label: '初中',
+        // disabled: true,
+        value: 1,
+    }, {
+        label: '高中',
+        // disabled: true,
+        value: 2,
+    }, {
+        label: '本科',
+        value: 3,
+    }, {
+        label: '硕士',
+        value: 4,
+    }, {
+        label: '博士',
+        value: 5,
+    }];
+```
+此时存在一一映射的value,但是很多时候我们的label和value是一致的，所以本次扩展以下格式: 
+```javascript
+export const single_only_value = ['小学', '初中', '高中', '本科', '硕士', '博士'];
+```
+上面的两种数据格式，除了返回的value不同，其他都一样。需要注意的是   
+* 本次修改只是对非联动的数据进行扩展，联动数据还使用原有格式
+* 请按照[以上数据源的格式](#list)进行数据处理，否则会发生错误
+
+
 ### 0.1.83
 修改对默认值的限制，之前默认值是必传的，现在默认值可传多种格式 
 + 不管多少列，如果没有默认值则默认第一项
@@ -118,5 +158,5 @@ onChange(res){
 
 ### 0.1.8
 添加props: height className
-height可自定义列表的高度
-className 可从外部动态为每一列添加一个自定义类名
++ height可自定义列表的高度
++ className 可从外部动态为每一列添加一个自定义类名

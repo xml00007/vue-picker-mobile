@@ -42,7 +42,7 @@
                 default: [],
             },
             defaultValue: {
-                type: [String,Number, Array],
+                type: [String, Number, Array],
             },
             isMulti: {
                 type: Boolean,
@@ -96,11 +96,12 @@
         mounted() {
             // 判断是单列
             if (!this.isMulti) {
-                this.listData = [this.list];
+                console.log("util.normalizeData(this.list)====>", util.normalizeData(this.list))
+                this.listData = this.list[0].constructor === Object ? [this.list] : [util.normalizeData(this.list)]
             }
             // 判断是多列非联动
             else if (this.isMulti && !this.isRelate) {
-                this.listData = this.list;
+                this.listData = this.list[0][0].constructor === Object ? this.list : util.normalizeData(this.list);
             }
             // 判断多列且联动
             else {
