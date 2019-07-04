@@ -1,6 +1,8 @@
 import Vue from 'vue';
 
-export const eventBus = new Vue();
+export const eventBus = function () {
+    return new Vue()
+};
 
 // 递归查找深度
 export const getDepth = (function () {

@@ -1,16 +1,17 @@
 <template>
     <div>
         <transition name="fade-mask">
-            <div v-if="show" class="mask"></div>
+            <div v-show="show" class="mask"></div>
         </transition>
         <transition name="fade">
-            <div v-if="show" class="picker">
+            <div v-show="show" class="picker">
                 <div class="picker-title">
                     <label class="action" @click="onClick('cancel')">取消</label>
                     <label class="action" @click="onClick('confirm')">确定</label>
                 </div>
                 <div class="picker-list">
-                    <group :defaultValue="defaultVal[index]" @onChange="onChange" v-for="(items,index) in listData"
+                    <group :defaultValue="defaultVal[index]" :userEvent="userEvent" @onChange="onChange"
+                           v-for="(items,index) in listData"
                            :data-col="index" :items="items"
                            :key="index"></group>
                 </div>
@@ -67,36 +68,12 @@
                 listData: [],
                 res: [],
                 def: [],
-                defaultVal: []
+                userEvent: util.eventBus()
             };
-        },
-        created() {
-            // 计算真正的length
-            let length = 1;
-            if (!this.isMulti) {
-
-            } else if (this.isMulti && !this.isRelate) {
-                length = this.list.length;
-            } else {
-                length = util.getDepth(this.list[0])
-            }
-            if (this.defaultValue && Array.isArray(this.defaultValue) && this.defaultValue.length === length) {
-                this.defaultVal = this.defaultValue;
-            } else if (!this.defaultValue) {
-                // 默认都是一项
-                this.defaultVal = new Array(length).fill(0)
-            } else if (!Array.isArray(this.defaultValue)) {
-                const def = new Array(length).fill(0);
-                def.splice(0, 1, this.defaultValue);
-                this.defaultVal = def
-            } else if (this.defaultValue.length < length) {
-                this.defaultVal = [].concat(this.defaultValue, new Array(length - this.defaultValue.length).fill(0))
-            }
         },
         mounted() {
             // 判断是单列
             if (!this.isMulti) {
-                console.log("util.normalizeData(this.list)====>", util.normalizeData(this.list))
                 this.listData = this.list[0].constructor === Object ? [this.list] : [util.normalizeData(this.list)]
             }
             // 判断是多列非联动
@@ -136,9 +113,10 @@
                     }
 
                     this.listData = listBefore.concat(listAfter);
-                    util.eventBus.$emit('changeDefaultItem', emit);
+                    this.userEvent.$emit('changeDefaultItem', emit);
                 }
                 // 最后一列change 或者是通过滑动的  则触发onChange事件
+                console.log('this.res====>', this.res, !isInit)
                 if (this.isRelate) {
                     if ((this.listData.length === col + 1)) {
                         this.$emit('onChange', this.res);
@@ -156,7 +134,30 @@
                 this.$emit('update:show', false);
             },
         },
-        computed: {},
+        computed: {
+            defaultVal: function () {
+                let length = 1;
+                if (!this.isMulti) {
+
+                } else if (this.isMulti && !this.isRelate) {
+                    length = this.list.length;
+                } else {
+                    length = util.getDepth(this.list[0])
+                }
+                if (this.defaultValue && Array.isArray(this.defaultValue) && this.defaultValue.length === length) {
+                    return this.defaultValue;
+                } else if (!this.defaultValue) {
+                    // 默认都是一项
+                    return new Array(length).fill(0)
+                } else if (!Array.isArray(this.defaultValue)) {
+                    const def = new Array(length).fill(0);
+                    def.splice(0, 1, this.defaultValue);
+                    return def
+                } else if (this.defaultValue.length < length) {
+                    return [].concat(this.defaultValue, new Array(length - this.defaultValue.length).fill(0))
+                }
+            }
+        },
         components: {
             group,
         },

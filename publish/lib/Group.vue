@@ -26,6 +26,9 @@
                 type: [ Number, String ],
                 default: null,
             },
+            userEvent:{
+                type: Object,
+            }
         },
         data() {
             return {
@@ -52,7 +55,6 @@
             // 如果有缓存的选项，则用缓存的选项，否则使用第一项。
             let index = 0;
             const defaultValue = this.defaultValue;
-            console.log('defaultValue', defaultValue)
             if (defaultValue !== null) {
                 const values = this.items.map((item) => {
                     return item.value;
@@ -68,7 +70,7 @@
             this.emitChange(this.items[index], index);
             this.setTranslate(this.translate);
 
-            util.eventBus.$on('changeDefaultItem', (res) => {
+            this.userEvent.$on('changeDefaultItem', (res) => {
                 if (res.includes(this.col)) {
                     this.translate = this.offset * this.height;
                     this.setTranslate(this.translate);
