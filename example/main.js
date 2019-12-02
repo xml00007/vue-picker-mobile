@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import VuePickerMobile from 'vue-picker-mobile'
+import VuePickerMobile from '../package/index'
 
 Vue.config.productionTip = false
 
