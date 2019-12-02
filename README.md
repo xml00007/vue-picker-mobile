@@ -25,11 +25,7 @@ Install the package
 ```javascript
 import VuePickerMobile from 'vue-picker-mobile'
 
-export default {
-  components: {
-    VuePickerMobile,
-  },
-}
+Vue.use(VuePickerMobile)
 ```
 `<VuePickerMobile/>`
 
