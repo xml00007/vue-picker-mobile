@@ -1,15 +1,20 @@
 {
   "name": "vue-picker-mobile",
-  "version": "0.1.3",
-  "main": "publish/lib/index.js",
+  "version": "0.1.94",
+  "description": "一款简单的、支持单列多列的、联动非联动的列表选择器",
+  "main": "lib/vue-picker-mobile.umd.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build-lib": "vue-cli-service build --target lib --dest lib --name vue-picker-mobile package/index.js",
+    "build-wc": "vue-cli-service build --target  wc --dest lib --name vue-picker-mobile package/lib/Picker.vue"
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-picker-mobile": "^0.1.94",
+    "vue-tag-textarea": "^0.1.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
@@ -42,5 +47,22 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xml00007/vue-picker-mobile.git"
+  },
+  "keywords": [
+    "vue2.x",
+    "vue-picker-mobile"
+  ],
+  "author": "信明良",
+  "license": "ISC",
+  "files": [
+    "./lib"
+  ],
+  "bugs": {
+    "url": "https://github.com/xml00007/vue-picker-mobile/issues"
+  },
+  "homepage": "https://github.com/xml00007/vue-picker-mobile/blob/master/publish/README.md"
 }

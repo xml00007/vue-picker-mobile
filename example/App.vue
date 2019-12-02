@@ -35,7 +35,6 @@
 </template>
 
 <script>
-    import Picker from '../publish';
     import {single_label_value, single_only_value} from './data/single';
     import {double1_label_value, double1_only_value} from './data/double1';
     import double2 from './data/double2';
@@ -100,9 +99,6 @@
                 const prop = 'show' + num;
                 this[prop] = !this[prop];
             },
-        },
-        components: {
-            Picker: Picker,
         },
     };
 </script>
