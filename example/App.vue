@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div class="picker">
         <div class="bg">
             <p>vue-picker-mobile</p>
         </div>
@@ -106,7 +106,7 @@
 <style>
     @import "./assets/reset.css";
 
-    #app {
+    .picker {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;

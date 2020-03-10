@@ -10,7 +10,7 @@ obj.install  = function (Vue) {
     Vue.component(VuePickerMobile.name, VuePickerMobile)
 }
 if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue)
+    obj.install(window.Vue)
 }
 
 export default obj

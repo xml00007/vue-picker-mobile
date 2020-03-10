@@ -4,16 +4,16 @@
 ## Demo
 ### 单列 
 #### -------------默认值----------VS----:height="40" :className="redColor"
-<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/s1.gif' width="200px" hspace="20" /><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/s2.gif' width="200px"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/s1.gif' width="200px" hspace="20" /><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/s2.gif' width="200px"/>
 
 ### 两列
 #### -------------非联动----------VS-----------联动-------------
-<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/d1.gif' width="200px" hspace="20"/><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/d2.gif' width="200px"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/d1.gif' width="200px" hspace="20"/><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/d2.gif' width="200px"/>
 
 
 ### 多列
 #### -------------非联动----------VS-----------联动-------------VS-----------时间列表-----------
-<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/m1.gif' width="200px" hspace="20"/> <img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/src/assets/m2.gif' width="200px"/><img src='./src/assets/d.gif' width="200px" hspace="20"/>
+<img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/m1.gif' width="200px" hspace="20"/> <img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/m2.gif' width="200px"/><img src='./example/assets/d.gif' width="200px" hspace="20"/>
 
 ## Installation
 
@@ -38,12 +38,12 @@ Vue.use(VuePickerMobile)
 - Default: `[]`
 
 列表的数据源,不同类型的数据操作略有差别，使用时请参考github
-  + [单列（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/single.js)
-  + [两列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/double1.js)
-  + [两列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/double2.js)
-  + [多列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/multiple1.js)
-  + [多列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/multiple2.js)
-  + [日期](https://github.com/xml00007/vue-picker-mobile/blob/master/src/data/date.js)
+  + [单列（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/single.js)
+  + [两列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/double1.js)
+  + [两列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/double2.js)
+  + [多列非联动（包含两种数据格式）](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/multiple1.js)
+  + [多列联动](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/multiple2.js)
+  + [日期](https://github.com/xml00007/vue-picker-mobile/blob/master/example/data/date.js)
   
 注：为方便使用，修改了非联动模式的数据传递方式，如单列可传：['小学', '初中', '高中', '本科', '硕士', '博士'] (版本号 > 0.1.84)
 ### isShow
