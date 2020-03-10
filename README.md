@@ -109,6 +109,8 @@ onChange(res){
 ```
 
 ## Update
+### 0.1.99
+添加[examples](https://xml00007.github.io/vue-picker-mobile/dist/index.html)
 
 ### 0.1.94
 修改文件目录，规范发布方式
@@ -160,3 +162,6 @@ export const single_only_value = ['小学', '初中', '高中', '本科', '硕�
 添加props: height className
 + height可自定义列表的高度
 + className 可从外部动态为每一列添加一个自定义类名
+
+## 感谢
+如果使用过程中有什么bug，非常感谢您能提出来，以便我能快速修复
