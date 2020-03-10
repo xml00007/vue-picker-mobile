@@ -1,7 +1,7 @@
 # vue-picker-mobile
 一款操作简单的移动端列表选择器，支持单列、多列，联动、非联动，配有详细的Demo
 
-## Demo
+## DEMO [examples](https://xml00007.github.io/vue-picker-mobile/dist/index.html)
 ### 单列 
 #### -------------默认值----------VS----:height="40" :className="redColor"
 <img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/s1.gif' width="200px" hspace="20" /><img src='https://raw.githubusercontent.com/xml00007/vue-picker-mobile/master/example/assets/s2.gif' width="200px"/>
